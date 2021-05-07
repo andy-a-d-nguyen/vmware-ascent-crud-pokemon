@@ -1,0 +1,145 @@
+swagger: "2.0"
+info:
+  description: "This is a pokemon API"
+  version: "0.0.1"
+  title: "Pokemon API"
+host: "localhost"
+basePath: "/v2"
+tags:
+- name: "Pokemon"
+  description: "Everything about Pokemon"
+schemes:
+- "https"
+- "http"
+paths:
+  /pokemon:
+    get:
+      tags:
+      - "pokemon"
+      summary: "Show all Pokemons"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "OK"
+        "404":
+          description: "Not Found"
+    post:
+      tags:
+      - "pokemon"
+      summary: "Add a new pokemon to the Pokedex"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pokemon that needs to be added to the pokedex"
+        required: true
+        responses:
+          "200":
+            description: "OK"
+          "404":
+            description: "Not Found"
+  /pokemon/{pokemonID}:
+    put:
+      tags:
+      - "pokemon"
+      summary: "Update a specific Pokemon"
+      description: ""
+      operationId: "updatePokemon"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pokemon that needs to be updated"
+        required: true
+        responses:
+          "200":
+            description: "OK"
+          "400":
+            description: "Invalid ID Supplied"
+          "404":
+            description: "Not Found"
+    delete:
+      tags:
+        - "pokemon"
+      summary: "delete a specific Pokemon"
+      description: ""
+      operationId: "deletePokemon"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "pokemonID"
+          in: "path"
+          description: "ID of pokemon to delete"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "OK"
+        "400":
+          description: "Invalid ID Supplied"
+        "404":
+          description: "Not Found"
+    get:
+      tags:
+      - "pokemon"
+      summary: "get a specific Pokemon"
+      description: ""
+      operationId: "getPokemon"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "pokemonID"
+          in: "path"
+          description: "ID of pokemon to get"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "OK"
+        "400":
+          description: "Invalid ID Supplied"
+        "404":
+          description: "Not Found"
+definitions:
+  Pokemon:
+    type: "object"
+    properties:
+      pokemonID:
+        type: "integer"
+        format: "int64"
+      type:
+        type: "string"
+      name:
+        type: "string"
+      status:
+        type: "string"
+        description: "health status"
+        enum:
+        - "fainted"
+        - "healthy"
+      hitPoints:
+        type: "integer"
+        format: "int64"
+      level:
+        type: "integer"
+        format: "int64"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
