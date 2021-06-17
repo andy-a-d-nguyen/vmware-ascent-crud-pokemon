@@ -60,14 +60,4 @@ public class PokemonDataControllerTest {
                         .andExpect(status().isOk())
                         .andExpect(jsonPath("name").value("Pikachu"));
     }
-
-//    @Test
-//    void updatePokemonTest() throws Exception {
-//        when(pokemonDataService.updatePokemon(any(PokemonData.class))).thenReturn(new PokemonData("Pikachu", 3, "Electric", PokemonData.Status.HEALTHY, 100,60));
-//
-//        mockMvc.perform(put("/pokemon/{id}")
-//                    .contentType(MediaType.APPLICATION_JSON)
-//                    .content("{\"name\":\"Pikachu\",\"id\":4,\"type\":\"Electric\",\"status\":\"HEALTHY\",\"hp\":100,\"lvl\":60}"))
-//                .andExpect(status().isOk());
-//    }
 }

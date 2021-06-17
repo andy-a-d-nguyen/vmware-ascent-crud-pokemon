@@ -16,8 +16,4 @@ public class PokemonDataService {
         pokemonArray.add(pokemonData);
         return pokemonData;
     }
-    
-//    public PokemonData updatePokemon(PokemonData pokemonData) {
-//        return null;
-//    }
 }
